@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icons/box-heart.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/stylelogin.css'%}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img style="width: 90%;" src="{% static 'img/imgd.jpg'%}" alt="">
+        </div>
+        <div class="form">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p{% if message.tags %} class="{{ message.tags }} stylemsg" {% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form action="{% url 'login'%}" method="post">
+                {% csrf_token %}
+                <div class="form-header">
+                    <div class="login-field">
+                        <div class="title">
+                            <h1>Login</h1>
+                        </div>
+                        <div class="input-box"> 
+                            <label for="nomeUsuario">Nome de usuário</label>
+                            <input type="text" name="nomeUsuario" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" required>
+                        </div>
+                        
+                        <div class="continue-button">
+                            <button class="btnc" type="submit">Entrar</button>
+                            <br>
+                            <span style="font-size: medium;">Não tem conta? <a style="text-decoration: none; color: #2ab1ce;" href="{% url 'cadastro'%}">Cadastre-se</a></span>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

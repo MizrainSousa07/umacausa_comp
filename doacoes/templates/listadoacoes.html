@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Doações</title>
+</head>
+<body>
+    <h1>Lista de Doações</h1>
+    <!--  -->
+    {% for doacao in doacoes %}
+        <img style="width: 400px;" src="{{ doacao.imagem.url }}" alt="{{ doacao.descricao }}">
+        <p>Descrição: {{ doacao.descricao }}</p>
+        <p>{{doacao.usuario.nome_usuario}}</p>
+        <p>Categoria: {{ doacao.categoria.nome }}</p>
+    {% endfor %}
+</body>
+</html>

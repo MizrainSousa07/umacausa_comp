@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stylepedidos.css'%}">
+    <title>Pedidos</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="brand">
+                <a href="{% url 'umacausa'%}">
+                    <svg class="svg-icon" style="width: 1em; height: 1em;vertical-align: text-top;fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M959.2 317.6L846.6 107.8C837.8 81.6 813.4 64 785.8 64H544v256h413.4c0.8-1 1-1.4 1.8-2.4zM64 384v512c0 35.4 28.6 64 64 64h768c35.4 0 64-28.6 64-64V384H64z m610.2 298.4l-145.2 142.8c-9.4 9.2-24.6 9.2-34 0l-145.2-142.8c-42.2-41.4-39.6-110.2 7.4-148.4 41-33.4 102.2-27.4 140 9.6l14.8 14.6 14.8-14.6c37.6-37 98.8-43 140-9.6 47 38.2 49.4 106.8 7.4 148.4zM480 320V64H238.2c-27.6 0-52 17.6-60.8 43.8L64.8 317.6c0.8 1 1 1.4 1.8 2.4H480z"  /></svg>
+
+                    Uma Causa
+                </a>
+            </div>
+            <nav>
+                <div class="nav-mobile">
+                    <a href="" id="nav-toggle">
+                        <span></span>
+                    </a>
+                </div>
+                <ul class="nav-list">
+                    {% if user_authenticated %}
+                        <li><a href="{% url 'doacoes'%}">Doações</a></li>
+                        <!-- <li><a href="#">Sobre</a></li> -->
+                        
+                        <li><a href="{% url 'logout'%}">Sair</a></li>
+                    {% else %}
+                        <li><a href="{% url 'doacoes'%}">Doações</a></li>
+                        <!-- <li><a href="#">Sobre</a>
+                        </li> -->
+                        <li><a href="{% url 'login'%}">Entrar</a></li>
+                        <li><a style="background-color: #fff; color: #2ab1ce; a:hover{background-color: #e8e8e8;}"  href="{% url 'cadastro'%}" >Cadastre-se</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <br>
+    <section class="sc1">
+        {% if user_authenticated %}
+            <div style="width: 100%; margin-bottom: 1rem;">
+                <!-- <button class="btndoar"><a style="text-decoration: none; color: #fff; font-weight: bold;" href="{% url 'novadoacao' %}">Criar Doação</a></button> -->
+                <button class="btndoar"><a style="text-decoration: none; color: #fff; font-weight: bold;" href="{% url 'novopedido' %}">Fazer Pedido</a></button>
+            </div>
+            {% for pedido in pedidos %}
+            {% if pedido.status == 'Aberto' %}
+                <div style="margin-bottom: 20px;" class="i-doacao">
+<!--                     
+                    <div style="margin:auto;"><img style="width: 90%; border-radius: 10px; margin-top: 1rem; margin-left: 0.45rem; margin-bottom: -1.5rem;" src="{{ doacao.imagem.url }}" alt="{{ doacao.descricao }}"></div> -->
+                    <!-- <br><br> -->
+                    <div>
+                        <span class="titulo-d">{{pedido.titulo}}</span>
+                        <br><br>
+                        <svg class="svg-user" xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em" viewBox="0 0 448 512" fill="#2ab1ce"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> 
+                        <span style="font-size: large;  font-weight: 500; padding-bottom: 0.5rem; margin-left: 0.5rem;"> {{pedido.usuario.nome_usuario}}</span>
+                        <br>
+                        
+                    </div>
+                    <br>
+                    <button class="btnverdoacao"><a style="text-decoration: none; color: #fff; font-weight: bold;" href="/verPedido/{{pedido.id_pedido}}">Ver Pedido</a></button>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for pedido in pedidos %}
+            {% if pedido.status == 'Aberto' %}
+                <div style="margin-bottom: 20px;" class="i-doacao">
+                    
+                    <!-- <div style="margin:auto;"><img style="width: 90%; border-radius: 10px; margin-top: 1rem; margin-left: 0.45rem; margin-bottom: -1.5rem;" src="{{ doacao.imagem.url }}" alt="{{ doacao.descricao }}"></div>
+                    <br><br> -->
+                    <div>
+                        <span class="titulo-d">{{pedido.titulo}}</span>
+                        <br><br><br>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em" viewBox="0 0 448 512" fill="#2ab1ce"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> 
+                        <span style="font-size: large;  font-weight: 500; padding-bottom: 0.5rem;"> {{pedido.usuario.nome_usuario}}</span>
+                        
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}        
+    </section>
+</body>
+</html>
