@@ -19,8 +19,7 @@ SECRET_KEY = 'django-insecure-6+59z5o%hyin)967kmv^^n3zg-($42ocqd*@08rs27*dqatppc
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-f7hm$@n*y_gshkxs4=(=*t&c@!d0@ljkq-z-aukm1=44!7&4@w')
 
 
-ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['api-umacausa.onrender.com', 'localhost', '0.0.0.0']
 
 # Application definition
 
