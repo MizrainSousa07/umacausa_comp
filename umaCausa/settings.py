@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-6+59z5o%hyin)967kmv^^n3zg-($42ocqd*@08rs27*dqatppc
 
 ALLOWED_HOSTS = ['umacausa-comp.onrender.com', 'http://localhost:8100']
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
