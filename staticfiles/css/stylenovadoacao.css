@@ -1,0 +1,73 @@
+:root{
+    --color1: #2ab1ce;
+    --color2: #009cbd;
+    --color3: #e8e8e8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+
+body{
+    background-color: var(--color2);
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.group{
+    margin-bottom: 1rem;
+    margin-left: 0.8rem;
+}
+
+input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+
+.btncadastrar{
+    background-color: var(--color2);
+    color: #fff;
+    border: none;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.slc{
+    width: 100%;
+    background: transparent;
+    height: 30px;
+    border-radius: 5px;
+}
+
+label{
+    margin-bottom: 0.5rem;
+} 
+
+.iptimg{
+    width: 300px;
+}
