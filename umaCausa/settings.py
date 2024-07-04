@@ -23,10 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-6+59z5o%hyin)967kmv^^n3zg-($42ocqd*@08rs27*dqatppc'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['https://umacausa-comp.onrender.com/']
+ALLOWED_HOSTS = ['umacausa-comp.onrender.com']
 
 
 # Application definition
