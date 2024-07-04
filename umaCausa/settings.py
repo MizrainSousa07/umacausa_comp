@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-6+59z5o%hyin)967kmv^^n3zg-($42ocqd*@08rs27*dqatppc
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ALLOW_ALL_ORIGINS = True
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -131,6 +129,11 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8100",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
