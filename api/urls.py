@@ -1,12 +1,14 @@
-from django.contrib import admin
 from django.urls import path, include
-from . import views
+from rest_framework.routers import DefaultRouter
+from usuarios.views import UsuarioViewSet
+from doacoes.views import DoacaoViewSet, PedidoViewSet, CategoriaViewSet
+
+router = DefaultRouter()
+router.register(r'usuarios', UsuarioViewSet)
+router.register(r'doacoes', DoacaoViewSet)
+router.register(r'pedidos', PedidoViewSet)
+router.register(r'categorias', CategoriaViewSet)
 
 urlpatterns = [
-    path('usuarios/', views.usuarios, name='usuarios'),
-    path('usuario/<int:id>', views.usuario, name='usuario'),
-    path('dadosUsuarios/', views.gerenciar_usuarios, name= 'gerenciar_usuarios'),
-    path('pedidos/', views.pedidos, name='pedidos'),
-    path('pedido/<int:id>', views.pedido, name='pedido'),
-    path('dadosPedidos/', views.gerenciar_pedidos, name= 'gerenciar_pedidos'),
+    path('', include(router.urls)),
 ]
