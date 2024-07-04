@@ -22,10 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6+59z5o%hyin)967kmv^^n3zg-($42ocqd*@08rs27*dqatppc'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-f7hm$@n*y_gshkxs4=(=*t&c@!d0@ljkq-z-aukm1=44!7&4@w')
 
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 # Application definition
 
@@ -129,12 +128,6 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8100',
-]
-
-CORS_ALLOW_CREDENTIALS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
