@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-f7hm$@n*y_gshkxs4=(=*t&c@!d0@ljkq-z-aukm1=44!7&4@w')
 
-ALLOWED_HOSTS = ['api-umacausa.onrender.com', 'localhost:8100']
+ALLOWED_HOSTS = ['umacausa-comp.onrender.com', 'localhost', '0.0.0.0']
 
 # Application definition
 
@@ -149,3 +149,10 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 }
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8100",
+    "https://umacausa-comp.onrender.com",
+]
+
+# Para testar, você pode permitir todas as origens, mas no ambiente de produção é melhor definir origens específicas
+CORS_ALLOW_ALL_ORIGINS = True
